@@ -1,13 +1,14 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background-color: #e6d8d8;
 }
 
 header {
     text-align:center;
     font-style: unset;
     padding: 10px;
-    background-color: #dfdddd
+    
 }
 
 /* arrow trigger start from here */
@@ -118,10 +119,9 @@ header {
 .gallery{
     display: flex;
     gap: 1em;
-    padding-top: 10px;
     overflow-x: auto ;
-    padding: 2em 2em;
-    background-color: rgb(245, 229, 208);
+    padding: 1em 2em;
+
 }
 
 .gallery::-webkit-scrollbar{
@@ -159,7 +159,7 @@ img:hover{
     transform: scale(1.5) rotate(12deg);
 }
 
-.overlay {
+.overlay_1 {
     position: absolute;
     left: -120%;
     bottom: 0;
@@ -172,7 +172,7 @@ img:hover{
    
 }
 
-.item:hover .overlay {
+.item:hover .overlay_1 {
     left: 0;
 }
 
@@ -182,7 +182,7 @@ img:hover{
   }
   
 .menu_table{
-    background-image: url(./foodmenu/sushi_bg.jpg);
+    
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     background-position: center center;
@@ -202,7 +202,7 @@ table {
     width: 100%;
     border-block-width: inherit;
     margin-top: 8px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 tbody tr:hover{
@@ -224,10 +224,11 @@ th{
 .order{
     text-align: center;
     padding: 0 20% 0 20%;
+    text-align: center;
 }
 
     /* Pop up for Ordering & Payment */
-    .overlay {
+    .ovl {
         display: none;
         position: fixed;
         top: 0;
@@ -237,7 +238,7 @@ th{
         background: rgb(39 37 14 / 84%); /* Semi-transparent black overlay */
         justify-content: center;
         align-items: center;
-        animation: fadeInOverlay  2.5s ease forwards;
+        animation: fadeInOvl  2.5s ease forwards;
       }
   
       /* Styles for the popup box */
@@ -251,7 +252,7 @@ th{
         animation: slideInPopup   2.5s ease forwards;
       }
   
-  @keyframes fadeInOverlay {
+  @keyframes fadeInOvl {
       from{
           opacity: 0;
       }
@@ -330,7 +331,7 @@ th{
 }
 
 .open-hour-section{
-    background-color: rgb(213, 209, 209, 0.459);
+    background-color: rgba(248, 248, 248, 0.459);
     padding: 1em 1em;
     border-radius: 10px;
 }
@@ -340,10 +341,10 @@ th{
 }
 
 .contact-info-section{
-    background-color: rgb(213, 209, 209, 0.459);
+    background-color: rgba(250, 249, 249, 0.459);
     padding: 1em 1em;
     border-radius: 10px;
-    text-align: justify;
+    text-align: center;
 }
     
 .contact-info a{
@@ -357,16 +358,16 @@ button{
     width: 120px;
     height: 40px;
     font-size: large;
-    background-color: #065f85;
+    background-color: #1099d4;
     color: white;
     border-radius: 6px;
-    border: 2px solid black;
+    border: 1px solid rgb(8, 8, 8);
     transition: 2s ease-in-out;
 }
 
 button:hover{
  background-color: #fff;
- color: #065f85;
+ color: #046c99;
 }
 
 .QRcode{

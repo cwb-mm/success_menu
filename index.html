@@ -15,59 +15,59 @@
     <div class="gallery">
         <div class="item">
             <img src="./foodmenu/Cashew Nut.jpg" alt=" a cup of smottie">  
-            <div class="overlay">Cashew Nut</div>
+            <div class="overlay_1">Cashew Nut</div>
         </div>
         <div class="item">
             <img src="./foodmenu/chocolate milkshake.jpg" alt=" a cup of smottie">
-            <div class="overlay">Chocolate Milkshake</div>
+            <div class="overlay_1">Chocolate Milkshake</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Takoyaki.jpg" alt=" a cup of smottie">
-            <div class="overlay">Takoyaki</div>
+            <div class="overlay_1">Takoyaki</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Tamagoyaki.jpg" alt=" a cup of smottie">
-            <div class="overlay">Tamagoyaki</div>
+            <div class="overlay_1">Tamagoyaki</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Yakisoba.jpg" alt=" a cup of smottie">
-            <div class="overlay">Yakisoba</div>
+            <div class="overlay_1">Yakisoba</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Okonomiyaki.jpg" alt=" a cup of smottie">
-            <div class="overlay">Okonomiyaki</div>
-        </div>
-        <div class="item">
-            <img src="./foodmenu/Onigiri.jpg" alt=" a cup of smottie">
-            <div class="overlay">Onigiri</div>
+            <div class="overlay_1">Okonomiyaki</div>
         </div> 
         <div class="item">
             <img src="./foodmenu/Shougayaki.jpg" alt=" a cup of smottie">
-            <div class="overlay">Shougayaki</div>
+            <div class="overlay_1">Shougayaki</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Curry Rice.jpg" alt=" a cup of smottie">
-            <div class="overlay">Curry Rice</div>
+            <div class="overlay_1">Curry Rice</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Dengo.jpg" alt=" a cup of smottie">
-            <div class="overlay">Dengo</div>
+            <div class="overlay_1">Dengo</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Dorayaki.jpg" alt=" a cup of smottie">
-            <div class="overlay">Dorayaki</div>
+            <div class="overlay_1">Dorayaki</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Putin.jpg" alt=" a cup of smottie">
-            <div class="overlay">Putin</div>
+            <div class="overlay_1">Putin</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Tampura.jpg" alt=" a cup of smottie">
-            <div class="overlay">Tampura</div>
+            <div class="overlay_1">Tampura</div>
         </div>
         <div class="item">
             <img src="./foodmenu/Tongatsu.jpg" alt=" a cup of smottie">
-            <div class="overlay">Tonkatsu</div>
+            <div class="overlay_1">Tonkatsu</div>
+        </div>
+        <div class="item">
+            <img src="./foodmenu/Onigiri.jpg" alt=" a cup of smottie">
+            <div class="overlay_1">Onigiri</div>
         </div>
     </div>
 
@@ -191,12 +191,12 @@
             <button onclick="openPopup()">Order & Pay</button>
         </div>
             <!-- Popup overlay and content -->
-                <div class="overlay" id="overlay">
+                <div class="ovl" id="ovl">
                 <div class="popup" style="width: 60%; height: fit-content;">
                     <h2 style="display: inline; padding-right: 1em;">Always consider the impact!</h2>
                     <div class="close-btn" onclick="closePopup()">X</div>
                     <hr>
-                    <img class="QRcode" src="./foodmenu/bgimage.jpg" alt="">
+                    <img class="QRcode" src="./foodmenu/QR code.jpg" alt="a pic of QR">
                     <p>Order details:</p>
                     <p>Total Price: <span id="popupTotalPrice">0</span> MMK</p>
                     <p>Thank you for coming to our Success Academy Cafe and if you have any question or recommendation you can directly fill our google survey form or if you are one of the google map user you can click the google map link to leave us a message in your journey. Please, enjoy!</p>
@@ -263,7 +263,7 @@
         // Popup for ordering & Payment
 
         function openPopup() {
-                document.getElementById('overlay').style.display = 'flex';
+                document.getElementById('ovl').style.display = 'flex';
                 // Get total price
                 const totalPrice = totalPriceDisplay.textContent;
                 // Update total price in the dialog
@@ -273,21 +273,21 @@
        
             // Function to close the popup with animation
         function closePopup() {
-            var overlay = document.getElementById('overlay');
+            var ovl = document.getElementById('ovl');
             var popup = document.querySelector('.popup'); // Corrected selector
             var closeBtn = document.querySelector('.close-btn');
 
             // Add class to trigger the fadeOutPopup animation
-            overlay.classList.add('fadeOutPopup');
+            ovl.classList.add('fadeOutPopup');
             popup.classList.add('slideOutPopup');
 
             closeBtn.classList.add('rotateOutCloseBtn');
 
             // Wait for the animation to complete before hiding the overlay
             setTimeout(function() {
-                overlay.style.display = 'none';
+                ovl.style.display = 'none';
                 // Remove the fadeOutPopup class to allow re-opening the popup
-                overlay.classList.remove('fadeOutPopup');
+                ovl.classList.remove('fadeOutPopup');
                 popup.classList.remove('slideOutPopup');
                 closeBtn.classList.remove('rotateOutCloseBtn');
             }, 500); // 500ms is the duration of the fadeOutPopup animation
