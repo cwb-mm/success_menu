@@ -226,7 +226,9 @@ th{
     padding: 0 20% 0 20%;
     text-align: center;
 }
-
+.bt{
+    
+}
     /* Pop up for Ordering & Payment */
     .ovl {
         display: none;
