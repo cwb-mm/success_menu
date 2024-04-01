@@ -195,19 +195,20 @@
                 <div class="ovl" id="ovl">
                     <div class="popup" style="width: 60%; height: fit-content;">
                         <h2 style="display: inline; padding-right: 1em;">Always consider the impact!</h2>
-                        <div class="close-btn" onclick="closePopup()">X</div>
-                        <hr>
-                        <div style="text-align: center;">
-                            <img class="QR_img" src="./foodmenu/qrcode.jpg" style="display: block; margin: 0 auto;" alt="">
+                        <div style="width: 2rem;">
+                            <span class="close-btn">&times;</span>
                         </div>
-                        <button id="scanButton">Scan QR Code</button>
+                        <hr>
+                        <div style="text-align: center; display: flex; justify-content: center; padding-right: 20%;">
+                            <img class="QR_img" src="./foodmenu/qrcode.jpg" style="display: block; margin: 0 auto;" alt="">
+                            <button class="scanbtn" id="scanButton">Scan QR Code</button>
+                        </div>                        
                         <p>Order details:</p>
                         <p>Total Price: <span id="popupTotalPrice">0</span> MMK</p>
                         <p>Thank you for coming to our Success Academy Cafe and if you have any question or recommendation you can directly fill our google survey form or if you are one of the google map user you can click the google map link to leave us a message in your journey. Please, enjoy!</p>
                         <ul style="padding-right:6px;">
                             <li style="display:inline;"><a href="https://www.facebook.com/one4oneclothing4all" target="_blank">Facebook</a></li>
                             <li style="display:inline;"><a href="https://www.instagram.com/one4one_clothing4all?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a></li>
-                            <li style="display:inline;"><a href="https://one4onemm.mystrikingly.com/" target="_blank">Strikingly</a></li>
                         </ul>
                     </div>
                 </div>
@@ -264,21 +265,30 @@
             totalPriceDisplay.textContent = totalPrice.toLocaleString() + '';
         }
 
-        // Popup for ordering & Payment
-
         function openPopup() {
-                document.getElementById('ovl').style.display = 'flex';
-                // Get total price
-                const totalPrice = totalPriceDisplay.textContent;
-                // Update total price in the dialog
-                document.getElementById('popupTotalPrice').textContent = totalPrice;
+            document.getElementById('ovl').style.display = 'flex';
+            // Get total price
+            const totalPrice = totalPriceDisplay.textContent;
+            // Update total price in the dialog
+            document.getElementById('popupTotalPrice').textContent = totalPrice;
 
-            }
-       
-            // Function to close the popup with animation
+            // Add click event listener to the overlay to close the popup when clicked outside
+            document.getElementById('ovl').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closePopup();
+                }
+            });
+
+            // Add click event listener to the close button to close the popup smoothly
+            document.querySelector('.close-btn').addEventListener('click', function() {
+                closePopup();
+            });
+        }                                                                               
+
+        // Function to close the popup with animation
         function closePopup() {
             var ovl = document.getElementById('ovl');
-            var popup = document.querySelector('.popup'); // Corrected selector
+            var popup = document.querySelector('.popup');
             var closeBtn = document.querySelector('.close-btn');
 
             // Add class to trigger the fadeOutPopup animation
@@ -294,11 +304,16 @@
                 ovl.classList.remove('fadeOutPopup');
                 popup.classList.remove('slideOutPopup');
                 closeBtn.classList.remove('rotateOutCloseBtn');
+
+                // Remove click event listener after closing the popup
+                document.getElementById('ovl').removeEventListener('click', function(event) {
+                    if (event.target === this) {
+                        closePopup();
+                    }
+                });
             }, 500); // 500ms is the duration of the fadeOutPopup animation
-            }
+        }
 
-
-       
     </script>
 
 </body>

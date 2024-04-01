@@ -229,12 +229,21 @@ th{
 
 #scanButton {
     padding: 1rem 0.3rem;
-    height: auto;
+    height: 4em;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    /* Center the button horizontally */
+    margin-top: 8%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#scanButton:hover {
+    transform: none;
+    opacity: none;
 }
 
 .QR_img{
@@ -253,20 +262,19 @@ th{
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgb(39 37 14 / 84%); /* Semi-transparent black overlay */
+        background: rgba(0, 0, 0, 0.5);
         justify-content: center;
         align-items: center;
-        animation: fadeInOvl  2.5s ease forwards;
+        z-index: 9999;
       }
   
       /* Styles for the popup box */
       .popup {
-        background: #fff; /* White background */
+        background: #fff;
         padding: 20px;
-        color: black;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        position: relative;
         animation: slideInPopup   2.5s ease forwards;
       }
   
@@ -292,39 +300,55 @@ th{
   
       /* Close button style */
       .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
         cursor: pointer;
-        color: #333;
-        font-size: 20px;
-        font-weight: 500; 
-        padding: 0px 4px;
-        float: right;
-        border: 1px solid #333;
-        border-radius: 20%;
-        transition: color 0.3s ease;
-        display: inline;
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+        text-align: center;
         animation: rotateOutCloseBtn 0.5s ease forwards; /* Animation for close button */
       }
-  
-      @keyframes fadeOutPopup {
-          from{
-              opacity: 10;
-          }
-          to{
-              opacity: 0;
-              transform: translateY(-50px);
-          } 
-      }
-  
-      @keyframes slideOutPopup {
-        from {
-          transform: translateY(0);
-          opacity: 1;
+
+      .fadeOutPopup {
+        animation: fadeOut 0.5s ease forwards;
         }
-        to {
-          transform: translateY(-50px);
-          opacity: 0;
+  
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
         }
-      }
+        
+        .slideOutPopup {
+            animation: slideOut 0.5s ease forwards;
+        }
+        
+        @keyframes slideOut {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(0, -100%);
+            }
+        }
+        
+        .rotateOutCloseBtn {
+            animation: rotateOut 0.5s forwards;
+        }
+        
+        @keyframes rotateOut {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
   
       .close-btn:hover{
           color: #ffffff;
