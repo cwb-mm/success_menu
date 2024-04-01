@@ -227,6 +227,16 @@ th{
     text-align: center;
 }
 
+#scanButton {
+    padding: 1rem 0.3rem;
+    height: auto;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .QR_img{
     width: auto; 
     height: 200px; 

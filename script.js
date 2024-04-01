@@ -52,36 +52,24 @@ address.style.transform = 'scale(1)';
      console.log('Order submitted!');
  }
 
-
- function startScanner() {
-        // Change the display style to block to show the overlay
-        document.getElementById('ovl').style.display = 'block';
-
-        // Start QR code scanner
-        Quagga.init({
-            inputStream: {
-                type: 'LiveStream',
-                constraints: {
-                    width: 640,
-                    height: 480,
-                    facingMode: 'environment' // or user
-                }
-            },
-            decoder: {
-                readers: ['code_128_reader', 'ean_reader', 'ean_8_reader', 'code_39_reader', 'code_39_vin_reader', 'codabar_reader', 'upc_reader', 'upc_e_reader', 'i2of5_reader']
-            }
-        }, function(err) {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            console.log('Initialization finished. Ready to start');
-            Quagga.start();
-        });
-
-        Quagga.onDetected(function(result) {
-            console.log('Result', result);
-            alert('Detected code: ' + result.codeResult.code);
-            Quagga.stop();
-        });
+ // JavaScript code to handle button click and activate camera
+ document.getElementById('scanButton').addEventListener('click', function() {
+    // Check if the browser supports the getUserMedia API
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Request access to the camera
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(function(stream) {
+                // Camera access granted, you can now handle the stream
+                // For example, you can use the stream to feed it to a QR code scanner library
+                console.log('Camera access granted');
+            })
+            .catch(function(error) {
+                // Handle errors such as permission denied or no camera available
+                console.error('Error accessing camera:', error);
+            });
+    } else {
+        // Browser doesn't support getUserMedia API
+        console.error('getUserMedia not supported in this browser');
     }
+});
+
