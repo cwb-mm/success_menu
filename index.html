@@ -6,6 +6,7 @@
     <title>Success Academy Cafe</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/quagga/dist/quagga.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
 </head>
 <body>
 
@@ -212,6 +213,13 @@
                         </ul>
                     </div>
                 </div>
+
+            <!-- this is the interface for QR code scanning -->
+            <div id="qrScanner">
+                <video id="videoElement" autoplay></video>
+                <canvas id="canvasElement" style="display:none;"></canvas>
+                <button id="scanButton">Scan QR Code</button>
+              </div>       
     </section> 
 
 
@@ -311,7 +319,7 @@
                         closePopup();
                     }
                 });
-            }, 500); // 500ms is the duration of the fadeOutPopup animation
+            }, 800); // 500ms is the duration of the fadeOutPopup animation
         }
 
     </script>

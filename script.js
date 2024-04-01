@@ -54,24 +54,47 @@ address.style.transform = 'scale(1)';
 
 
  document.addEventListener("DOMContentLoaded", function() {
-    // JavaScript code to handle button click and activate camera
-    document.getElementById('scanButton').addEventListener('click', function() {
-        // Check if the browser supports the getUserMedia API
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Request access to the camera
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-                .then(function(stream) {
-                    // Camera access granted, you can now handle the stream
-                    // For example, you can use the stream to feed it to a QR code scanner library
-                    console.log('Camera access granted');
-                })
-                .catch(function(error) {
-                    // Handle errors such as permission denied or no camera available
-                    console.error('Error accessing camera:', error);
-                });
-        } else {
-            // Browser doesn't support getUserMedia API
-            console.error('getUserMedia not supported in this browser');
-        }
+    const videoElement = document.getElementById("videoElement");
+    const canvasElement = document.getElementById("canvasElement");
+    const scanButton = document.getElementById("scanButton");
+  
+    // Check if getUserMedia is available
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      // Request access to the camera
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          videoElement.srcObject = stream;
+          videoElement.play();
+        })
+        .catch(function(error) {
+          console.error('Error accessing camera:', error);
+        });
+    } else {
+      console.error('getUserMedia not supported in this browser');
+    }
+  
+    // Function to capture video frame and decode QR code
+    function scanQRCode() {
+      const context = canvasElement.getContext('2d');
+      context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+      const imageData = context.getImageData(0, 0, canvasElement.width, canvasElement.height);
+      const code = jsQR(imageData.data, imageData.width, imageData.height, {
+        inversionAttempts: 'dontInvert',
+      });
+      if (code) {
+        console.log('QR Code detected:', code.data);
+        alert('QR Code detected: ' + code.data); // You can perform any action here with the scanned QR code
+      } else {
+        console.log('No QR Code detected');
+      }
+      // Request the next animation frame to continue scanning
+      requestAnimationFrame(scanQRCode);
+    }
+  
+    // Add click event listener to the scan button
+    scanButton.addEventListener('click', function() {
+      // Start scanning QR code
+      scanQRCode();
     });
-});
+  });
+  
