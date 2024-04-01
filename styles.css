@@ -226,8 +226,14 @@ th{
     padding: 0 20% 0 20%;
     text-align: center;
 }
-.bt{
-    
+
+.QR_img{
+    width: auto; 
+    height: 200px; 
+}
+
+.QR_img:hover{
+    transform: none;
 }
     /* Pop up for Ordering & Payment */
     .ovl {

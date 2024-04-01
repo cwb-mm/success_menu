@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Academy Cafe</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/quagga/dist/quagga.min.js"></script>
 </head>
 <body>
 
@@ -192,20 +193,23 @@
         </div>
             <!-- Popup overlay and content -->
                 <div class="ovl" id="ovl">
-                <div class="popup" style="width: 60%; height: fit-content;">
-                    <h2 style="display: inline; padding-right: 1em;">Always consider the impact!</h2>
-                    <div class="close-btn" onclick="closePopup()">X</div>
-                    <hr>
-                    <button class="bt"> Scanner</button>
-                    <p>Order details:</p>
-                    <p>Total Price: <span id="popupTotalPrice">0</span> MMK</p>
-                    <p>Thank you for coming to our Success Academy Cafe and if you have any question or recommendation you can directly fill our google survey form or if you are one of the google map user you can click the google map link to leave us a message in your journey. Please, enjoy!</p>
-                    <ul style="padding-right:6px;">
-                        <li style="display:inline;"><a href="https://www.facebook.com/one4oneclothing4all" target="_blank">Facebook</a></li>
-                        <li style="display:inline;"><a href="https://www.instagram.com/one4one_clothing4all?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a></li>
-                        <li style="display:inline;"><a href="https://one4onemm.mystrikingly.com/" target="_blank">Strikingly</a></li>
-                    </ul>
-                </div>
+                    <div class="popup" style="width: 60%; height: fit-content;">
+                        <h2 style="display: inline; padding-right: 1em;">Always consider the impact!</h2>
+                        <div class="close-btn" onclick="closePopup()">X</div>
+                        <hr>
+                        <div style="text-align: center;">
+                            <img class="QR_img" src="./foodmenu/qrcode.jpg" style="display: block; margin: 0 auto;" alt="">
+                        </div>
+                        <button class="bt" onclick="startScanner()"> Scanner</button>
+                        <p>Order details:</p>
+                        <p>Total Price: <span id="popupTotalPrice">0</span> MMK</p>
+                        <p>Thank you for coming to our Success Academy Cafe and if you have any question or recommendation you can directly fill our google survey form or if you are one of the google map user you can click the google map link to leave us a message in your journey. Please, enjoy!</p>
+                        <ul style="padding-right:6px;">
+                            <li style="display:inline;"><a href="https://www.facebook.com/one4oneclothing4all" target="_blank">Facebook</a></li>
+                            <li style="display:inline;"><a href="https://www.instagram.com/one4one_clothing4all?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a></li>
+                            <li style="display:inline;"><a href="https://one4onemm.mystrikingly.com/" target="_blank">Strikingly</a></li>
+                        </ul>
+                    </div>
                 </div>
     </section> 
 
