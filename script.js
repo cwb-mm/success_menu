@@ -52,24 +52,26 @@ address.style.transform = 'scale(1)';
      console.log('Order submitted!');
  }
 
- // JavaScript code to handle button click and activate camera
- document.getElementById('scanButton').addEventListener('click', function() {
-    // Check if the browser supports the getUserMedia API
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        // Request access to the camera
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-            .then(function(stream) {
-                // Camera access granted, you can now handle the stream
-                // For example, you can use the stream to feed it to a QR code scanner library
-                console.log('Camera access granted');
-            })
-            .catch(function(error) {
-                // Handle errors such as permission denied or no camera available
-                console.error('Error accessing camera:', error);
-            });
-    } else {
-        // Browser doesn't support getUserMedia API
-        console.error('getUserMedia not supported in this browser');
-    }
-});
 
+ document.addEventListener("DOMContentLoaded", function() {
+    // JavaScript code to handle button click and activate camera
+    document.getElementById('scanButton').addEventListener('click', function() {
+        // Check if the browser supports the getUserMedia API
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Request access to the camera
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function(stream) {
+                    // Camera access granted, you can now handle the stream
+                    // For example, you can use the stream to feed it to a QR code scanner library
+                    console.log('Camera access granted');
+                })
+                .catch(function(error) {
+                    // Handle errors such as permission denied or no camera available
+                    console.error('Error accessing camera:', error);
+                });
+        } else {
+            // Browser doesn't support getUserMedia API
+            console.error('getUserMedia not supported in this browser');
+        }
+    });
+});
